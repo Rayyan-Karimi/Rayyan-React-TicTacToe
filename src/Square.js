@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 
-export default function Square({ cross, toggleCross }) {
-  const [boxValue, setBoxValue] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleClick = () => {
-    setBoxValue(cross ? "X" : "O");
-    setIsClicked(true);
-    toggleCross();
-  };
-
+export default function Square({
+  rowIndex,
+  colIndex,
+  value,
+  handleSquareClick,
+  isGameOver,
+}) {
   return (
     <button
       className={`square bg-white hover:bg-slate-200 w-20 h-20 border border-black ${
-        isClicked && "cursor-not-allowed"
+        (isGameOver || value) && "hover:cursor-not-allowed"
       }`}
-      onClick={handleClick}
-      disabled={isClicked}
+      onClick={() => handleSquareClick(rowIndex, colIndex)}
+      disabled={isGameOver || value}
     >
-      {boxValue}
+      {value}
     </button>
   );
 }
