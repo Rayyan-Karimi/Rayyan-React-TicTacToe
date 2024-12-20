@@ -12,9 +12,11 @@ function Hero() {
 
 function App() {
   return (
-    <div className="App flex justify-center items-center min-w-screen min-h-screen">
+    <div className="App">
       <Hero />
-      <Board />
+      <div className="flex flex-col items-center mt-6">
+        <Board />
+      </div>
     </div>
   );
 }
